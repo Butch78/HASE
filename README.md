@@ -12,7 +12,7 @@ pip install -r requirements.txt
 
 ## Tasks
 
-This a basic FastAPI application that will return ```user``` & ```item``` objects. You will have 3 tasks which are fixing the 3 endpoints in the ```main.py``` file.
+This a basic FastAPI application that will return ```user``` & ```item``` objects. You will have 3 tasks which are fixing the 3 endpoints in the ```src/main.py``` file.
 
 **Task 1**
 
