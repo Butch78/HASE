@@ -26,7 +26,7 @@ Ensure that when you perform the ```client.get("/users")``` function you are abl
 
 Ensure that when you perform the ```client.get("/items")``` function you are able to return a python list of ```Item```
 
-To check if all tasks are complete sucessfully by running the following command
+Please use the following command to check the tasks are complete sucessfully
 ```
-pytest
+pytest -v
 ```
