@@ -25,13 +25,11 @@ def health():
     raise HTTPException(status_code=404, detail="Not Healthy")
 
 # Test 2: test_main::test_get_users
-@app.get("/people", response_model=list[schemas.User])
+@app.get("/people")
 def read_users(db: Session = Depends(get_db)):
-    users = crud.get_users(db)
-    return users
+    return crud.get_users(db)
 
 # Test 3: test_main::test_get_items
-@app.post("/items", response_model=list[schemas.Item])
+@app.post("/items")
 def read_items(db: Session = Depends(get_db)):
-    items = crud.get_items(db)
-    return items
+    return crud.get_items(db)
