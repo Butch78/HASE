@@ -16,21 +16,6 @@ def test_health():
     assert response.status_code == expected_status_code
     assert response.json() == {"status": "ok"}
 
-def test_create_user():
-    # Arrange
-    name = "John Doe"
-    email = "johndoe@test.com"
-    user = UserCreate(email="", name=name)
-    expected_status_code = 200
-
-    # Act
-    response = client.post("/users", json=user.model_dump())
-
-    # Assert
-    assert response.status_code == expected_status_code
-    assert response.json()["name"] == user.name
-    assert response.json()["email"] == user.email
-
 def test_get_users():
     # Arrange
     expected_status_code = 200

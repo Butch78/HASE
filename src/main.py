@@ -1,37 +1,13 @@
 from fastapi import Depends, FastAPI, HTTPException
 from sqlalchemy.orm import Session
-from faker import Faker
-
 from src import crud, models, schemas
+
 from src.database import SessionLocal, engine
-from contextlib import asynccontextmanager
-
 models.Base.metadata.create_all(bind=engine)
-
 app = FastAPI()
 
-@asynccontextmanager
-async def lifespan(app: FastAPI):
-    fake = Faker()
-    db = SessionLocal()
-    for _ in range(10):
-        db_user = crud.get_user_by_email(db, email=fake.email())
-        if db_user:
-            continue
-        user = schemas.UserCreate(
-            email=fake.email(),
-            name=fake.name(),
-        )
-        print(user)
-        crud.create_user(db=db, user=user)
-    db.close()
-    
 
-app = FastAPI(lifespan=lifespan)
-
-
-
-# Dependency
+# Creates the database Dependancy 
 def get_db():
     db = SessionLocal()
     try:
@@ -39,41 +15,23 @@ def get_db():
     finally:
         db.close()
 
+
+# ONLY EDIT CODE BELOW THIS POINT 
+
+
+# Test 1: test_main::test_health
 @app.get("/health")
 def health():
     raise HTTPException(status_code=404, detail="Not Healthy")
 
-
-@app.post("/users", response_model=schemas.User)
-def create_user(user: schemas.UserCreate, db: Session = Depends(get_db)):
-    db_user = crud.get_user_by_email(db, email=user.email)
-    if db_user:
-        raise HTTPException(status_code=400, detail="Email already registered")
-    return crud.create_user(db=db, user=user)
-
-
+# Test 2: test_main::test_get_users
 @app.get("/people", response_model=list[schemas.User])
-def read_users(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
-    users = crud.get_users(db, skip=skip, limit=limit)
+def read_users(db: Session = Depends(get_db)):
+    users = crud.get_users(db)
     return users
 
-
-@app.get("/users/{user_id}", response_model=schemas.User)
-def read_user(user_id: int, db: Session = Depends(get_db)):
-    db_user = crud.get_user(db, user_id=user_id)
-    if db_user is None:
-        raise HTTPException(status_code=404, detail="User not found")
-    return db_user
-
-
-@app.post("/users/{user_id}/items/", response_model=schemas.Item)
-def create_item_for_user(
-    user_id: int, item: schemas.ItemCreate, db: Session = Depends(get_db)
-):
-    return crud.create_user_item(db=db, item=item, user_id=user_id)
-
-
+# Test 3: test_main::test_get_items
 @app.post("/items", response_model=list[schemas.Item])
-def read_items(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
-    items = crud.get_items(db, skip=skip, limit=limit)
+def read_items(db: Session = Depends(get_db)):
+    items = crud.get_items(db)
     return items
