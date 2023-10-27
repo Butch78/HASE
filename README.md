@@ -1,5 +1,10 @@
 # Python Coding Tasks
 
+# Introduction
+
+For this Experiment you will be using FastAPI a python framework for building APIs. You will be given a basic FastAPI application that has 3 endpoints, you will need to fix the endpoints so that they return the correct data.
+
+
 ## Set Up
 
 To complete the Tasks you will need to open this repository in Github Codespaces, you can access this by pressing **<> Code** -> **Codespaces** ->  **Create Codespace on Master**
