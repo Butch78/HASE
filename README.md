@@ -2,7 +2,7 @@
 
 ## Set Up
 
-To complete the Tasks you will need to open this repository in Github Codespaces, you can access this by pressing **<> Code** -> **Open in Codespace**
+To complete the Tasks you will need to open this repository in Github Codespaces, you can access this by pressing **<> Code** -> **Codespaces** ->  **Create Codespace on Master**
 
 
 ## Tasks
