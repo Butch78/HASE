@@ -4,11 +4,29 @@
 
 To complete the Tasks you will need to open this repository in Github Codespaces, you can access this by pressing **<> Code** -> **Codespaces** ->  **Create Codespace on Master**
 
+Once your Codespace has started you will just need to install the required packages using this command:
+
+```
+pip install -r requirements.txt
+```
 
 ## Tasks
 
-This a basic FastAPI application that will return ```user``` & ```item``` objects.
-Your tasks are to ensure all tasks are passing so that the correct information is returned, to check that the tests are passing by running the following command in the terminal:
+This a basic FastAPI application that will return ```user``` & ```item``` objects. You will have 3 tasks which are fixing the 3 endpoints in the ```main.py``` file.
+
+**Task 1**
+
+Ensure that the ```/health``` endpoint returns ```{'status': 'ok'}```
+
+**Task 2**
+
+Ensure that when you perform the ```client.get("/users")``` function you are able to return a python list of ```User```
+
+**Task 3**
+
+Ensure that when you perform the ```client.get("/items")``` function you are able to return a python list of ```Item```
+
+To check if all tasks are complete sucessfully by running the following command
 ```
 pytest
 ```

@@ -1,6 +1,7 @@
 from fastapi import Depends, FastAPI, HTTPException
 from sqlalchemy.orm import Session
-from src import crud, models, schemas
+from src import crud, models
+from src.schemas import User, Item
 
 from src.database import SessionLocal, engine
 models.Base.metadata.create_all(bind=engine)
@@ -19,17 +20,20 @@ def get_db():
 # ONLY EDIT CODE BELOW THIS POINT 
 
 
-# Test 1: test_main::test_health
+# Task 1: Test Get Health
 @app.get("/health")
 def health():
     raise HTTPException(status_code=404, detail="Not Healthy")
 
-# Test 2: test_main::test_get_users
+
+# Task 2: Test Get Users
 @app.get("/people")
 def read_users(db: Session = Depends(get_db)):
     return crud.get_users(db)
 
-# Test 3: test_main::test_get_items
+
+
+# Tasl 3: Test Get Items
 @app.post("/items")
 def read_items(db: Session = Depends(get_db)):
     return crud.get_items(db)
