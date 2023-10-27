@@ -32,7 +32,6 @@ def read_users(db: Session = Depends(get_db)):
     return crud.get_users(db)
 
 
-
 # Tasl 3: Test Get Items
 @app.post("/items")
 def read_items(db: Session = Depends(get_db)):

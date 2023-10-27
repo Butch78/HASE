@@ -7,8 +7,12 @@ class Item(BaseModel):
     owner_id: int
 
 
+class UserCreate(BaseModel):
+    name: str
+    email: str
+    
 
-class User(BaseModel):
+class User(UserCreate):
     name: str
     email: str
     items: list[Item] = []
