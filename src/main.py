@@ -4,13 +4,14 @@ from faker import Faker
 
 from src import crud, models, schemas
 from src.database import SessionLocal, engine
+from contextlib import asynccontextmanager
 
 models.Base.metadata.create_all(bind=engine)
 
 app = FastAPI()
 
-@app.on_event("startup")
-async def startup():
+@asynccontextmanager
+async def lifespan(app: FastAPI):
     fake = Faker()
     db = SessionLocal()
     for _ in range(10):
@@ -24,6 +25,9 @@ async def startup():
         print(user)
         crud.create_user(db=db, user=user)
     db.close()
+    
+
+app = FastAPI(lifespan=lifespan)
 
 
 
