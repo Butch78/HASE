@@ -30,13 +30,31 @@ pytest
 
 Ensure that the ```/health``` endpoint returns ```{'status': 'ok'}```
 
+Check the success of this task by running the following command in the terminal:
+
+```bash
+pytest src/tests/test_main.py::test_health
+```
+
 **Task 2**
 
 Ensure that when the Test client queries the endpoint ```/users```, it returns the list of ```User``` models.
 
+Check the success of this task by running the following command in the terminal:
+
+```bash
+pytest src/tests/test_main.py::test_get_users
+```
+
 **Task 3**
 
 Ensure that when the Test client queries the endpoint ```/items```, it returns the list of ```Item``` models.
+
+Check the success of this task by running the following command in the terminal:
+
+```bash
+pytest src/tests/test_main.py::test_get_items
+```
 
 
 
