@@ -42,4 +42,10 @@ Ensure that when the Test client queries the endpoint ```/items```, it returns t
 
 # Conclusion
 
-Please submit your you ChatGPT/Github Copilot message history & your browser history (During the Experiment) to ```matthewtyler.aylward@uzh.ch```
+Please run the following command in the terminal to output your results:
+    
+```bash
+pytest > test_results.txt
+```
+
+Please submit your the newly created file ```test_results.txt```, your ChatGPT/Github Copilot message history & your browser history (During the Experiment) to ```matthewtyler.aylward@uzh.ch```
