@@ -20,19 +20,17 @@ def get_db():
 # ONLY EDIT CODE BELOW THIS POINT 
 
 
-# Task 1: Test Get Health
+# Task 1
 @app.get("/health")
 def health():
-    raise HTTPException(status_code=404, detail="Not Healthy")
+    raise HTTPException(status_code=404, detail="ok")
 
-
-# Task 2: Test Get Users
+# Task 2
 @app.get("/people")
-def read_users(db: Session = Depends(get_db)):
+def read_users(db: Session = Depends(get_db)) -> list[User]:
     return crud.get_users(db)
 
-
-# Tasl 3: Test Get Items
+# Task 3
 @app.post("/items")
-def read_items(db: Session = Depends(get_db)):
+def read_items(db: Session = Depends(get_db)) -> list[Item]:
     return crud.get_items(db)
