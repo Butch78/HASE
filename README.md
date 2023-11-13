@@ -60,4 +60,4 @@ Please run the following command in the terminal to output your results:
 pytest > test_results.txt
 ```
 
-Please submit your the newly created file ```test_results.txt```, your ChatGPT/Github Copilot message history & your browser history (During the Experiment) to ```matthewtyler.aylward@uzh.ch```
+Please submit your the newly created file ```test_results.txt```, your ChatGPT GPT-3.5 message history & your browser history (During the Experiment) to ```matthewtyler.aylward@uzh.ch```
